@@ -22,15 +22,61 @@ const createRecipe = () => {
     saveRecipes()
     return id
 }
+const recipeSummary = (recipe) => {
+    let howManyTrue = 0
+    let  howManyFalse = 0
+    recipe.ingredients.forEach((ingredient) => {
+        if (ingredient.have === true) {
+            howManyTrue++
+            
+        }else {
+            howManyFalse++
+        }
+    })
+    console.log(howManyTrue)
+    console.log(recipe.ingredients.length)
+    if (howManyTrue === 0 ) {
+        return "You have none of the ingredients."
+    } else if (howManyTrue === recipe.ingredients.length) {
+        return "You have all of the ingredients"
+    }else {
+        return "You have some of the ingredients."
+    }
+  
+    
+    
+}
 
-const renderRecipes= () => {
+const generateRecipeDOM = (recipe) => {
+    const recipeEl = document.createElement("div")
+    const textEl = document.createElement("a")
+    const summaryText = document.createElement("p")
+    recipe.title.length > 0 ? textEl.textContent = recipe.title: textEl.textContent = "unnamed recipe"
+    textEl.setAttribute("href",`edit.html#${recipe.id}`)
+    summaryText.textContent= recipeSummary(recipe)
+    recipeEl.appendChild(textEl)
+    recipeEl.appendChild(summaryText)
+    return recipeEl
+}
+
+const renderRecipes= (filters) => {
     const recipesEl = document.querySelector("#recipes")
     const recipes = loadRecipes()
     const filteredRecipes = recipes.filter((recipe) => {
         return recipe.title.toLowerCase().includes(filters.searchText.toLowerCase())
     })
     recipesEl.innerHTML=""
-    recipeEl.appendChild(filteredRecipes)
+    if (filteredRecipes.length > 0) {
+        filteredRecipes.forEach((recipe)=> {
+            const recipeEl = generateRecipeDOM(recipe)
+            recipesEl.appendChild(recipeEl)
+        })
+       
+    }else {
+        const emptyMessage = document.createElement("p")
+        emptyMessage.textContent = "No Recipes to show"
+        recipesEl.appendChild(emptyMessage)
+    }
 
 }
 
