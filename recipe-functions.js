@@ -24,23 +24,17 @@ const createRecipe = () => {
 }
 const recipeSummary = (recipe) => {
     let howManyTrue = 0
-    let  howManyFalse = 0
     recipe.ingredients.forEach((ingredient) => {
         if (ingredient.have === true) {
             howManyTrue++
-            
-        }else {
-            howManyFalse++
         }
     })
-    console.log(howManyTrue)
-    console.log(recipe.ingredients.length)
     if (howManyTrue === 0 ) {
-        return "You have none of the ingredients."
+        return "You have none of the ingredients"
     } else if (howManyTrue === recipe.ingredients.length) {
         return "You have all of the ingredients"
     }else {
-        return "You have some of the ingredients."
+        return "You have some of the ingredients"
     }
   
     
@@ -48,12 +42,14 @@ const recipeSummary = (recipe) => {
 }
 
 const generateRecipeDOM = (recipe) => {
-    const recipeEl = document.createElement("div")
+    const recipeEl = document.createElement("label")
     const textEl = document.createElement("a")
-    const summaryText = document.createElement("p")
+    const summaryText = document.createElement("span")
     recipe.title.length > 0 ? textEl.textContent = recipe.title: textEl.textContent = "unnamed recipe"
+    textEl.classList.add("ingredient-link")
     textEl.setAttribute("href",`edit.html#${recipe.id}`)
     summaryText.textContent= recipeSummary(recipe)
+    recipeEl.classList.add("list-item")
     recipeEl.appendChild(textEl)
     recipeEl.appendChild(summaryText)
     return recipeEl
@@ -99,29 +95,33 @@ const renderIngredients = (recipe) => {
         const ingredientsEl = document.querySelector("#ingredients")
         ingredientsEl.innerHTML = ""
         recipe.ingredients.forEach((ingredient)=> {
-            const ingredientDiv = document.createElement("div")
+            const ingredientLabel= document.createElement("label")
+            ingredientLabel.classList.add("ingredient-item")
+            const ingredientItemContainer = document.createElement("div")
+            ingredientItemContainer.classList.add("ingredient-item__container")
             const checkBox = document.createElement("input")
             checkBox.checked = ingredient.have
             const ingredientText = document.createElement("span")
             ingredientText.textContent = ingredient.name
             
-            const removeButton = document.createElement("button")
             checkBox.setAttribute("type","checkbox")
             checkBox.addEventListener("change", ()=> {
                 toggleIngredient(ingredient.name)
             })
-            ingredientDiv.appendChild(checkBox)
-            ingredientDiv.appendChild(ingredientText)
+            ingredientItemContainer.appendChild(checkBox)
+            ingredientItemContainer.appendChild(ingredientText)
         
-            //setup remove button
-            removeButton.textContent = "remove"
-            removeButton.addEventListener("click",() => {
+            //setup remove link
+            const remove = document.createElement("a")
+            remove.textContent = "remove"
+            remove.addEventListener("click",() => {
                 removeIngredient(ingredient.name)
                 saveRecipes()
                 renderIngredients(recipe)
             })
-            ingredientDiv.appendChild(removeButton)
-            ingredientsEl.appendChild(ingredientDiv)
+            ingredientLabel.appendChild(ingredientItemContainer)
+            ingredientLabel.appendChild(remove)
+            ingredientsEl.appendChild(ingredientLabel)
     })
     
 }

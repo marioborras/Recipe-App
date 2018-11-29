@@ -8,14 +8,26 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 <body>
-    <h1>Recipe App</h1>
-    <input id="search-text" type="text" placeholder="Search">
-    <div id="recipes"> </div>
-    <button class="btn btn-primary" id="create-recipe">Add Recipe</button>
+    <header class="header">
+        <div class="container">
+            <h1>Recipe App</h1>
+        </div>
+    </header>
+            <div class="actions">
+                <div class="actions__container">
+                    <input id="search-text" class="input" type="text" placeholder="Search">
+            </div>
+        </div>
+    
+    <main class="container">
+        <div id="recipes"> </div>
+        <button class="button" id="create-recipe">Add Recipe</button>
+    </main>
+
+
+
     <script src="uuidv4.js"></script>
     <script src="recipe-functions.js"></script>
     <script src="recipe-app.js"></script>
-    
-    
 </body>
 </html>

@@ -8,17 +8,22 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
 <body>
-    <h1>Edit Recipe</h1>
-    <input id="recipe-title" type="text" placeholder="Recipe Title">
-    </br></br>
-    <textarea id="recipe-body" placeholder="Enter Your Recipe Instructions here"></textarea>
-    <div id="ingredients"></div>
-    <form id="ingredients-form">
-            <input placeholder="Add an an ingredient" type="text" name="text">
-            <button>Add Ingredient</button>
-    </form>
-    </br> </br>
-    <button id="remove-recipe">Remove Recipe</button>
+    <header class="header">
+        <div class="container">
+            <h1>Edit Recipe </h1>
+        </div>
+    </header>
+    <div class="container">
+        <input id="recipe-title" class="title-input" type="text" placeholder="Recipe Title">
+        <textarea id="recipe-body" class="body-input" placeholder="Enter Your Recipe Instructions here"></textarea>
+        <div id="ingredients"></div>
+        <form id="ingredients-form">
+                <input class="input" placeholder="Add an an ingredient" type="text" name="text">
+                <button class="button">Add Ingredient</button>
+        </form>
+        </br> </br>
+        <button id="remove-recipe" class="button">Remove Recipe</button>
+    </div>
    
     <script src="recipe-functions.js"></script>
     <script src="recipe-edit.js"></script>
