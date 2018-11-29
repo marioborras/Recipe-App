@@ -32,4 +32,8 @@ document.querySelector("#ingredients-form").addEventListener("submit",(e)=> {
     renderIngredients(recipe)
 })
 
+document.querySelector("#remove-recipe").addEventListener("click",() => {
+    removeRecipe(recipeID)
+    location.assign(`/index.html`)
+})
 

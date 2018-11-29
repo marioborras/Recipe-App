@@ -9,13 +9,33 @@ html {
 }
 
 body {
-    background: #2B292E;
+    background-image:
+        -moz-linear-gradient(45deg, #FFE4E1, transparent 25%), 
+        -moz-linear-gradient(-45deg, #FFE4E1, transparent 25%),
+        -moz-linear-gradient(45deg, transparent 75%,#FFE4E1 75%),
+        -moz-linear-gradient(-45deg, transparent 75%,#FFE4E1 75%);
+    background-image:
+        -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #FFE4E1), color-stop(.25, transparent)), 
+        -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #FFE4E1), color-stop(.25, transparent)),
+        -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75 ,#FFE4E1)),
+        -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #FFE4E1));
+
+    -moz-background-size:100px 100px;
+    background-size:100px 100px;
+    -webkit-background-size:100px 101px; 
+  
+    background-position:0 0, 50px 0, 50px -50px, 0px 50px;    
     color: #fafafa;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1.6rem;
+    position: relative;
 }
 
-
+a {
+    color: inherit;
+    text-decoration: none;
+    
+}
 .header {
     background: red;
     color:white;
@@ -69,13 +89,12 @@ body {
      display: block;
      font-size: 2.0rem;
      padding-bottom: .2rem;
-     text-decoration: none;
      
  }
 .list-item {
     color: #fafafa;
     cursor: pointer;
-    background: #353239;
+    background: #c99ca8;
     border: 1px solid #423e47;
     margin: 1.6rem 0;
     padding: 1rem 1.6rem;
@@ -83,7 +102,7 @@ body {
     transition: background .3s ease;
 }
 .list-item:hover {
-    background: #3d3941;
+    background:  #83656d;
 }
 
 /* Recipe Editor */
@@ -112,7 +131,7 @@ body {
 .ingredient-item {
     color: #fafafa;
     cursor: pointer;
-    background: #353239;
+    background: #c99ca8;
     border: 1px solid #423e47;
     margin: 1.6rem 0;
     padding: 1rem 1.6rem;
@@ -121,6 +140,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center
+}
+.ingredient-item:hover {
+    background:  #83656d;
 }
 .ingredient-item__container {
     display: flex;
@@ -131,4 +153,11 @@ body {
 
 .ingredient-item__container > *:first-child {
     margin-right: .8rem;
+}
+
+/* image */
+.cooking-mama-image {
+    position: absolute;
+    left: 0;
+    z-index: -1;
 }

@@ -16,3 +16,4 @@ document.querySelector("#search-text").addEventListener("input", (e)=> {
     filters.searchText = e.target.value
     renderRecipes(filters)
 })
+

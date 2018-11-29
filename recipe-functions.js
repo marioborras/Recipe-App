@@ -75,7 +75,14 @@ const renderRecipes= (filters) => {
     }
 
 }
+const removeRecipe = (recipeID)=> {
+    const recipeIndex = recipes.findIndex((recipe)=> recipe.id === recipeID)
+    if (recipeIndex > -1) {
+        recipes.splice(recipeIndex,1)
+    }
+    saveRecipes()
 
+}
 const toggleIngredient = (name) => {
     const ingredient = recipe.ingredients.find(ingredient => ingredient.name === name)
     if (ingredient) {
