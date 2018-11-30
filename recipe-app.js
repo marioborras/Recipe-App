@@ -7,8 +7,10 @@ const filters = {
 renderRecipes(filters)
 
 document.querySelector("#create-recipe").addEventListener("click", (e) =>{
-    const id = createRecipe()
-    location.assign(`/edit.html#${id}`)
+    // const id = createRecipe()
+    createRecipe()
+    // location.assign(`/edit.html#${id}`)
+    renderRecipes(filters)
 
 })
 

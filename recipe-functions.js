@@ -20,7 +20,6 @@ const createRecipe = () => {
 
     })
     saveRecipes()
-    return id
 }
 const recipeSummary = (recipe) => {
     let howManyTrue = 0
