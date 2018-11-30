@@ -58,8 +58,32 @@ a {
     margin: 0 auto;
     min-height: 3rem;
     padding: 0 1.6rem;
+    position: relative;
 }
-
+.actions__container input{
+    border-radius: 0px;
+    height: 4.7rem;
+    padding-left: 58px;
+    background: transparent;
+    border-bottom: 2px solid black;
+    width: 400px;
+}
+.actions__container input:hover {
+    background-color: rgb(240, 176, 176);
+}
+.actions__container input:focus {
+    outline: none;
+}
+.actions__container img {
+    position: absolute;
+    top: 50%;
+    left: 17px;
+    transform: translateY(-50%);
+}
+input[type=text]{
+    font-size: 3rem;
+    font-family: "Indie Flower", cursive;
+}
 /* Forms Input */
 
 .input {
@@ -127,9 +151,15 @@ a {
     margin: 2.4rem 0;
     min-height: 15rem;
     padding: .8rem;
+    resize: none;
     width: 100%;
 }
 /* ingredients */
+.ingredients-header {
+    font-size: 3.4rem;
+    color: black;
+    text-shadow: 2px 2px coral;
+}
 .ingredient-item {
     color: #fafafa;
     cursor: pointer;

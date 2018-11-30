@@ -3,18 +3,22 @@ const bodyElement = document.querySelector("#recipe-body")
 const recipeID = location.hash.substring(1)
 let recipes = loadRecipes()
 let recipe = recipes.find((recipe) => recipe.id === recipeID)
-titleElement.value = recipe.title
-bodyElement.value =recipe.body
+
+if (recipe.name || recipe.instructions){
+    titleElement.value = recipe.name
+    bodyElement.value =recipe.instructions
+}
+
 
 renderIngredients(recipe)
 
 titleElement.addEventListener("input", (e)=> {
-    recipe.title = e.target.value
+    recipe.name = e.target.value
     saveRecipes()
 })
 
 bodyElement.addEventListener("input", (e)=> {
-    recipe.body = e.target.value
+    recipe.instructions = e.target.value
     saveRecipes()
 })
 

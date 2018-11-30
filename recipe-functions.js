@@ -12,13 +12,8 @@ localStorage.setItem("recipes",JSON.stringify(recipes))
 }
 const createRecipe = () => {
     const id =uuidv4()
-    recipes.push({
-        id: id,
-        title: "",
-        body: "",
-        ingredients: []
-
-    })
+    const newRecipe = new Recipe(id,"Unnamed Recipe", "", [])
+    recipes.push(newRecipe)
     saveRecipes()
 }
 const recipeSummary = (recipe) => {
@@ -44,7 +39,7 @@ const generateRecipeDOM = (recipe) => {
     const recipeEl = document.createElement("label")
     const textEl = document.createElement("a")
     const summaryText = document.createElement("span")
-    recipe.title.length > 0 ? textEl.textContent = recipe.title: textEl.textContent = "unnamed recipe"
+    textEl.textContent = recipe.name
     textEl.classList.add("ingredient-link")
     textEl.setAttribute("href",`edit.html#${recipe.id}`)
     summaryText.textContent= recipeSummary(recipe)
@@ -58,7 +53,7 @@ const renderRecipes= (filters) => {
     const recipesEl = document.querySelector("#recipes")
     const recipes = loadRecipes()
     const filteredRecipes = recipes.filter((recipe) => {
-        return recipe.title.toLowerCase().includes(filters.searchText.toLowerCase())
+        return recipe.name.toLowerCase().includes(filters.searchText.toLowerCase())
     })
     recipesEl.innerHTML=""
     if (filteredRecipes.length > 0) {
@@ -120,6 +115,7 @@ const renderIngredients = (recipe) => {
             //setup remove link
             const remove = document.createElement("a")
             remove.textContent = "remove"
+            remove.style.color ="red"
             remove.addEventListener("click",() => {
                 removeIngredient(ingredient.name)
                 saveRecipes()
