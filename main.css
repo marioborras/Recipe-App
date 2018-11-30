@@ -26,7 +26,7 @@ body {
   
     background-position:0 0, 50px 0, 50px -50px, 0px 50px;    
     color: #fafafa;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Indie Flower", cursive;
     font-size: 1.6rem;
     position: relative;
 }
@@ -72,12 +72,14 @@ a {
     padding: .4rem .8rem;
 }
 
+
 .button {
     background: red;
     border: none;
     border-bottom: 2px solid salmon;
     color: white;
-    font-size: 1.4rem;
+    font-family: "Indie Flower", cursive;
+    font-size: 2.3rem;
     font-weight: 300;
     padding: .8rem;
     transition: background .3s ease, color .3s ease;
