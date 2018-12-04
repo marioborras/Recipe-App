@@ -5,7 +5,9 @@
 }
 
 html {
+
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
@@ -28,7 +30,9 @@ body {
     color: #fafafa;
     font-family: "Indie Flower", cursive;
     font-size: 1.6rem;
+    min-height: 100%;
     position: relative;
+    padding-bottom: 20px;
 }
 
 a {
@@ -190,6 +194,16 @@ input[type=text]{
 /* image */
 .cooking-mama-image {
     position: absolute;
-    left: 0;
+    top: 90px;left: 0;
     z-index: -1;
+}
+
+.footer {
+    background-color: red;
+    height: 20px;
+    position: absolute;
+    left: 0; right: 0;bottom: 0;
+    text-align: center;
+    width: 100%;
+
 }
